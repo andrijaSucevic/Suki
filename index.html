@@ -1,8 +1,1071 @@
-<h1>Andrija Sučević</h1>
-<p>Spacecraft Operations Engineer | Earth Observation | Systems Engineering</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrija Sucevic — Spacecraft Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<h2>Articles</h2>
-<p>Coming soon.</p>
+    :root {
+      --space:      #0B0E1A;
+      --deep:       #1C2333;
+      --mid:        #2A3550;
+      --signal:     #4A7FA5;
+      --amber:      #E8A020;
+      --light:      #E8EDF2;
+      --muted:      #8A9BBB;
+      --border:     rgba(74,127,165,0.18);
+      --font-head:  'Space Grotesk', sans-serif;
+      --font-body:  'Inter', sans-serif;
+    }
 
-<h2>Contact</h2>
-<p>your email here</p>
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--space);
+      color: var(--light);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 60px;
+      background: rgba(11,14,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .nav-brand span { color: var(--amber); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--light); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 10vw;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(74,127,165,0.12) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232,160,32,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Orbital ring — signature element */
+    .orbital {
+      position: absolute;
+      right: 8vw;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(480px, 44vw);
+      height: min(480px, 44vw);
+      pointer-events: none;
+    }
+
+    .orbital svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .orbit-ring {
+      fill: none;
+      stroke: var(--signal);
+      stroke-width: 1;
+      opacity: 0.22;
+    }
+
+    .orbit-ring-2 {
+      fill: none;
+      stroke: var(--amber);
+      stroke-width: 0.6;
+      opacity: 0.12;
+    }
+
+    .orbit-dot {
+      fill: var(--amber);
+      r: 3.5;
+    }
+
+    .orbit-dot-2 {
+      fill: var(--signal);
+      r: 2;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 560px; }
+
+    .hero-eyebrow {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--amber);
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--light);
+      margin-bottom: 12px;
+    }
+
+    h1 .surname { color: var(--signal); }
+
+    .hero-role {
+      font-family: var(--font-head);
+      font-size: clamp(14px, 1.6vw, 18px);
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: rgba(232,237,242,0.7);
+      line-height: 1.75;
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+
+    .hero-coords {
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: rgba(138,155,187,0.5);
+      margin-top: 48px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 3px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--signal);
+      color: var(--light);
+      border: 1px solid var(--signal);
+    }
+
+    .btn-primary:hover {
+      background: #5B90B5;
+      border-color: #5B90B5;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      margin-left: 12px;
+    }
+
+    .btn-ghost:hover {
+      color: var(--light);
+      border-color: var(--signal);
+    }
+
+    /* ── SECTIONS ────────────────────────────────────────── */
+    section {
+      padding: 100px 10vw;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--signal);
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--light);
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    /* ── ARTICLES ────────────────────────────────────────── */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .article-card {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 32px;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+
+    .article-card:hover {
+      border-color: var(--signal);
+      transform: translateY(-2px);
+    }
+
+    .article-tag {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 14px;
+    }
+
+    .article-title {
+      font-family: var(--font-head);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--light);
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .article-excerpt {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .article-meta {
+      margin-top: 20px;
+      font-family: var(--font-head);
+      font-size: 11px;
+      color: rgba(138,155,187,0.5);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .article-arrow {
+      color: var(--signal);
+      font-size: 16px;
+      transition: transform 0.2s;
+    }
+
+    .article-card:hover .article-arrow { transform: translateX(3px); }
+
+    /* ── PROJECTS ────────────────────────────────────────── */
+    .projects-list { display: flex; flex-direction: column; gap: 0; }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: start;
+      gap: 28px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .project-item:first-child { border-top: 1px solid var(--border); }
+
+    .project-num {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 700;
+      color: rgba(74,127,165,0.2);
+      letter-spacing: -0.02em;
+      padding-top: 3px;
+    }
+
+    .project-title {
+      font-family: var(--font-head);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--light);
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .project-status {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--signal);
+      white-space: nowrap;
+      padding-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-status::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+    }
+
+    .project-status.completed { color: rgba(138,155,187,0.5); }
+    .project-status.completed::before { background: rgba(138,155,187,0.3); }
+
+    /* ── CV ──────────────────────────────────────────────── */
+    .cv-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 64px;
+    }
+
+    .cv-section-head {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 24px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(232,160,32,0.2);
+    }
+
+    .cv-entry {
+      margin-bottom: 32px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .cv-entry::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--signal);
+    }
+
+    .cv-entry-title {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--light);
+      margin-bottom: 3px;
+    }
+
+    .cv-entry-org {
+      font-size: 13px;
+      color: var(--signal);
+      margin-bottom: 3px;
+    }
+
+    .cv-entry-date {
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: rgba(138,155,187,0.5);
+      margin-bottom: 8px;
+    }
+
+    .cv-entry-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-name {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--light);
+      letter-spacing: 0.04em;
+    }
+
+    .skill-bar {
+      height: 2px;
+      background: var(--mid);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--signal), var(--amber));
+      border-radius: 1px;
+      transition: width 1s ease;
+    }
+
+    .cv-download {
+      margin-top: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* ── CONTACT ─────────────────────────────────────────── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-desc {
+      font-size: 15px;
+      color: rgba(232,237,242,0.65);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 16px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-link:hover { color: var(--light); }
+
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 3px;
+      background: var(--deep);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .contact-link-label {
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(138,155,187,0.4);
+      margin-bottom: 1px;
+    }
+
+    .contact-link-value { color: var(--light); font-size: 14px; }
+
+    /* Contact form */
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-label {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-input, .form-textarea {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 12px 16px;
+      color: var(--light);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--signal);
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(138,155,187,0.35); }
+
+    .form-textarea { min-height: 120px; }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      padding: 32px 10vw;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: rgba(138,155,187,0.35);
+    }
+
+    .footer-signal {
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: rgba(74,127,165,0.4);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      nav .nav-links { gap: 20px; }
+      #hero, section { padding-left: 24px; padding-right: 24px; }
+      .orbital { display: none; }
+      .cv-layout, .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+      .project-item { grid-template-columns: 50px 1fr; }
+      .project-status { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .orbit-dot, .orbit-dot-2 { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-brand">A<span>.</span>SUCEVIC</a>
+    <ul class="nav-links">
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" style="border-top: none;">
+    <div class="hero-bg"></div>
+
+    <div class="orbital">
+      <svg viewBox="-240 -240 480 480" xmlns="http://www.w3.org/2000/svg">
+        <!-- outer ring -->
+        <ellipse class="orbit-ring" cx="0" cy="0" rx="220" ry="220"/>
+        <!-- inclined orbit -->
+        <ellipse class="orbit-ring" cx="0" cy="0" rx="200" ry="90" transform="rotate(-30)"/>
+        <!-- inner ring -->
+        <ellipse class="orbit-ring-2" cx="0" cy="0" rx="130" ry="130"/>
+        <!-- equatorial band -->
+        <ellipse class="orbit-ring-2" cx="0" cy="0" rx="200" ry="40" transform="rotate(10)"/>
+        <!-- planet body -->
+        <circle cx="0" cy="0" r="36" fill="var(--deep)" stroke="var(--signal)" stroke-width="1" opacity="0.7"/>
+        <circle cx="0" cy="0" r="36" fill="none" stroke="rgba(74,127,165,0.25)" stroke-width="6"/>
+
+        <!-- satellite dot on inclined orbit -->
+        <circle class="orbit-dot">
+          <animateMotion dur="9s" repeatCount="indefinite">
+            <mpath href="#inclined-path"/>
+          </animateMotion>
+        </circle>
+
+        <!-- secondary dot -->
+        <circle class="orbit-dot-2">
+          <animateMotion dur="14s" repeatCount="indefinite" begin="-5s">
+            <mpath href="#outer-path"/>
+          </animateMotion>
+        </circle>
+
+        <!-- paths for animation -->
+        <defs>
+          <path id="inclined-path" d="M 200 0 A 200 90 0 1 1 199.9 0" transform="rotate(-30)"/>
+          <path id="outer-path" d="M 220 0 A 220 220 0 1 1 219.9 0"/>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Spacecraft Operations Engineer</div>
+      <h1>Andrija<br><span class="surname">Sucevic</span></h1>
+      <p class="hero-role">Operation Preparation · Routine Operations · LEOP</p>
+      <p class="hero-desc">
+        Engineering the link between Earth and orbit. I work at the intersection of flight operations, ground segment architecture, and systems engineering — keeping spacecraft healthy, on-course, and mission-ready.
+      </p>
+      <div>
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-coords">48.8566° N, 2.3522° E &nbsp;·&nbsp; LEO COVERAGE ACTIVE &nbsp;·&nbsp; NOMINAL</div>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section id="articles">
+    <div class="section-label">Articles</div>
+    <h2 class="section-title">Writing & Research</h2>
+    <p class="section-sub">Thoughts on spacecraft operations, mission design, and the engineering challenges of keeping satellites alive.</p>
+
+    <div class="articles-grid">
+      <a href="#" class="article-card">
+        <div class="article-tag">Operations</div>
+        <div class="article-title">Contingency Procedures in Autonomous Satellite Operations</div>
+        <div class="article-excerpt">Exploring how modern spacecraft handle anomaly detection and safe-mode transitions without waiting for ground contact.</div>
+        <div class="article-meta">
+          <span>Mar 2025 · 8 min read</span>
+          <span class="article-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="#" class="article-card">
+        <div class="article-tag">Flight Dynamics</div>
+        <div class="article-title">Orbital Decay and Drag Management in Very Low Earth Orbit</div>
+        <div class="article-excerpt">A practical look at station-keeping strategies for VLEO missions where atmospheric drag dominates the perturbation budget.</div>
+        <div class="article-meta">
+          <span>Nov 2024 · 11 min read</span>
+          <span class="article-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="#" class="article-card">
+        <div class="article-tag">Ground Segment</div>
+        <div class="article-title">Building Resilient Ground Station Networks for Small Satellites</div>
+        <div class="article-excerpt">How distributed ground networks and software-defined radio are democratising mission control for NewSpace operators.</div>
+        <div class="article-meta">
+          <span>Aug 2024 · 6 min read</span>
+          <span class="article-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="#" class="article-card">
+        <div class="article-tag">Systems Engineering</div>
+        <div class="article-title">Telemetry & Telecommand Protocol Design for CubeSat Missions</div>
+        <div class="article-excerpt">Lessons learned from designing TMTC stacks for resource-constrained spacecraft — balancing reliability, bandwidth, and simplicity.</div>
+        <div class="article-meta">
+          <span>May 2024 · 9 min read</span>
+          <span class="article-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="#" class="article-card">
+        <div class="article-tag">Mission Design</div>
+        <div class="article-title">On-Orbit Commissioning: A Checklist-Driven Approach</div>
+        <div class="article-excerpt">What the early mission phase looks like from the operations team's perspective, and why structured commissioning saves missions.</div>
+        <div class="article-meta">
+          <span>Feb 2024 · 7 min read</span>
+          <span class="article-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="#" class="article-card">
+        <div class="article-tag">Tools</div>
+        <div class="article-title">Open-Source Astrodynamics Toolkits for the Working Engineer</div>
+        <div class="article-excerpt">A review of Orekit, Poliastro, and GMAT — where each shines and where you'll hit walls in real mission scenarios.</div>
+        <div class="article-meta">
+          <span>Dec 2023 · 10 min read</span>
+          <span class="article-arrow">→</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">Mission Work</h2>
+    <p class="section-sub">A selection of spacecraft programmes, operations roles, and engineering contributions I've been part of.</p>
+
+    <div class="projects-list">
+      <div class="project-item">
+        <div class="project-num">01</div>
+        <div>
+          <div class="project-title">EO-SENTINEL — Earth Observation Mission</div>
+          <div class="project-desc">Spacecraft operations engineer for an Earth observation satellite in SSO. Responsibilities cover flight dynamics support, pass planning, anomaly investigation, and procedure authoring for nominal and contingency operations.</div>
+          <div class="project-tags">
+            <span class="tag">Flight Ops</span>
+            <span class="tag">SSO</span>
+            <span class="tag">EO</span>
+            <span class="tag">Anomaly Investigation</span>
+          </div>
+        </div>
+        <div class="project-status">Active</div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-num">02</div>
+        <div>
+          <div class="project-title">GroundLink — Autonomous Pass Scheduling Tool</div>
+          <div class="project-desc">Developed an automated pass scheduling system integrating TLE propagation, antenna handoff logic, and conflict resolution for a multi-spacecraft, multi-station ground network. Reduced manual scheduling effort by ~70%.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Orekit</span>
+            <span class="tag">Ground Segment</span>
+            <span class="tag">Automation</span>
+          </div>
+        </div>
+        <div class="project-status completed">Completed</div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-num">03</div>
+        <div>
+          <div class="project-title">CubeSat Technology Demonstrator — University Programme</div>
+          <div class="project-desc">Systems and operations lead for a 3U CubeSat mission concept developed as part of an ESA academic initiative. Defined the CONOPS, designed the TMTC architecture, and authored the operations handbook for the ground operations team.</div>
+          <div class="project-tags">
+            <span class="tag">CubeSat</span>
+            <span class="tag">CONOPS</span>
+            <span class="tag">TMTC</span>
+            <span class="tag">ESA</span>
+          </div>
+        </div>
+        <div class="project-status completed">Completed</div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-num">04</div>
+        <div>
+          <div class="project-title">OrbitalSim — Conjunction Assessment Dashboard</div>
+          <div class="project-desc">Open-source web dashboard visualising conjunction data messages (CDMs) from Space-Track, with probability of collision trending, operator alert thresholds, and manoeuvre delta-V estimation.</div>
+          <div class="project-tags">
+            <span class="tag">Space Traffic</span>
+            <span class="tag">CDM</span>
+            <span class="tag">Open Source</span>
+            <span class="tag">Python / JS</span>
+          </div>
+        </div>
+        <div class="project-status">In Progress</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <div class="section-label">CV</div>
+    <h2 class="section-title">Background</h2>
+    <p class="section-sub">Education, experience, and technical capabilities across spacecraft operations and systems engineering.</p>
+
+    <div class="cv-layout">
+      <!-- Left column -->
+      <div>
+        <div class="cv-section-head">Experience</div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Spacecraft Operations Engineer</div>
+          <div class="cv-entry-org">Aerospace Operations Centre</div>
+          <div class="cv-entry-date">2023 — Present</div>
+          <div class="cv-entry-desc">Flight operations support for LEO Earth observation missions. Flight dynamics, pass planning, anomaly management, procedure development, and on-call ops console duties.</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Ground Segment Engineer (Intern)</div>
+          <div class="cv-entry-org">ESA — European Space Agency</div>
+          <div class="cv-entry-date">2022 — 2023</div>
+          <div class="cv-entry-desc">Supported ground station network operations and interface testing for a deep-space tracking facility. Contributed to IOAG standardisation working group documentation.</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Mission Analysis Student</div>
+          <div class="cv-entry-org">Research Institute for Astrodynamics</div>
+          <div class="cv-entry-date">2021 — 2022</div>
+          <div class="cv-entry-desc">Research on orbital decay modelling for VLEO satellites, atmospheric density corrections using NRLMSISE-00, and drag compensation strategies for electric propulsion systems.</div>
+        </div>
+
+        <div style="margin-top: 40px;">
+          <div class="cv-section-head">Education</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-title">M.Sc. Spacecraft Engineering</div>
+            <div class="cv-entry-org">Technical University — Aerospace Department</div>
+            <div class="cv-entry-date">2020 — 2023</div>
+            <div class="cv-entry-desc">Specialisation in mission design and ground segment operations. Thesis: "Automated Anomaly Detection in Spacecraft Telemetry using Unsupervised Learning."</div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-title">B.Sc. Aerospace Engineering</div>
+            <div class="cv-entry-org">Faculty of Engineering</div>
+            <div class="cv-entry-date">2017 — 2020</div>
+            <div class="cv-entry-desc">Core curriculum in orbital mechanics, propulsion systems, structural analysis, and systems engineering. First-class honours.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div>
+        <div class="cv-section-head">Technical Skills</div>
+
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-name">Orbital Mechanics</div>
+            <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Flight Operations</div>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Python</div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">MATLAB / Simulink</div>
+            <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">GMAT / Orekit</div>
+            <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Ground Segment Design</div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">TMTC Architecture</div>
+            <div class="skill-bar"><div class="skill-fill" style="width:76%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Systems Engineering</div>
+            <div class="skill-bar"><div class="skill-fill" style="width:84%"></div></div>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+          <div class="cv-section-head">Certifications & Courses</div>
+          <div class="cv-entry">
+            <div class="cv-entry-title">ECSS Certification — Space Systems Engineering</div>
+            <div class="cv-entry-org">European Cooperation for Space Standardization</div>
+            <div class="cv-entry-date">2024</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry-title">SMPTE Systems Readiness Review Assessor</div>
+            <div class="cv-entry-org">Mission Operations Training Programme</div>
+            <div class="cv-entry-date">2023</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry-title">Space Traffic Management Fundamentals</div>
+            <div class="cv-entry-org">International Astronautical Federation</div>
+            <div class="cv-entry-date">2022</div>
+          </div>
+        </div>
+
+        <div class="cv-download">
+          <a href="#" class="btn btn-ghost" style="margin-left:0;">↓ Download Full CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-sub">Open to collaborations, research discussions, and new mission opportunities.</p>
+
+    <div class="contact-layout">
+      <div>
+        <p class="contact-desc">
+          Whether you're looking for operations support, want to discuss a research idea, or are building a team for an upcoming mission — I'd be glad to hear from you. I usually respond within a few days.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:andrija@sucevic.space" class="contact-link">
+            <div class="contact-link-icon">✉</div>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">andrija@sucevic.space</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="contact-link">
+            <div class="contact-link-icon">in</div>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/andrija-sucevic</div>
+            </div>
+          </a>
+          <a href="https://github.com" target="_blank" class="contact-link">
+            <div class="contact-link-icon">⌥</div>
+            <div>
+              <div class="contact-link-label">GitHub</div>
+              <div class="contact-link-value">github.com/andrija-sucevic</div>
+            </div>
+          </a>
+          <a href="https://orcid.org" target="_blank" class="contact-link">
+            <div class="contact-link-icon">id</div>
+            <div>
+              <div class="contact-link-label">ORCID</div>
+              <div class="contact-link-value">orcid.org/0000-0000-0000-0000</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <form class="contact-form" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-input" placeholder="Your name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" placeholder="you@domain.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-input" placeholder="What's this about?" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Tell me about your mission…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2025 Andrija Sucevic — All rights reserved</div>
+    <div class="footer-signal">SIGNAL NOMINAL</div>
+  </footer>
+
+</body>
+</html>
