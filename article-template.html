@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ═══════════════════════════════════════════════════
+       ARTICLE META — fill these in
+  ════════════════════════════════════════════════════ -->
+  <title>ARTICLE TITLE — Andrija Sučević</title>
+  <meta name="description" content="ONE-SENTENCE SUMMARY OF THE ARTICLE" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --space:     #0B0E1A;
+      --deep:      #1C2333;
+      --mid:       #2A3550;
+      --signal:    #4A7FA5;
+      --amber:     #E8A020;
+      --light:     #E8EDF2;
+      --muted:     #8A9BBB;
+      --border:    rgba(74,127,165,0.18);
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --prose-width: 680px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--space);
+      color: var(--light);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ──────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 60px;
+      background: rgba(11,14,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .nav-brand span { color: var(--amber); }
+
+    .nav-back {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-back:hover { color: var(--light); }
+
+    /* ── ARTICLE HERO ─────────────────────────────────── */
+    .article-hero {
+      padding: 120px 10vw 64px;
+      max-width: calc(var(--prose-width) + 20vw);
+      margin: 0 auto;
+    }
+
+    .article-tag {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .article-tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--amber);
+    }
+
+    .article-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--light);
+      margin-bottom: 24px;
+      max-width: var(--prose-width);
+    }
+
+    .article-subtitle {
+      font-family: var(--font-head);
+      font-size: clamp(16px, 1.8vw, 20px);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: var(--prose-width);
+      line-height: 1.5;
+      margin-bottom: 36px;
+    }
+
+    .article-meta-bar {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .meta-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(138,155,187,0.45);
+    }
+
+    .meta-value {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .meta-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--border);
+    }
+
+    /* ── PROSE ────────────────────────────────────────── */
+    .article-body {
+      max-width: var(--prose-width);
+      margin: 0 auto;
+      padding: 56px 10vw 100px;
+    }
+
+    /* Headings */
+    .article-body h2 {
+      font-family: var(--font-head);
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--light);
+      margin: 52px 0 16px;
+      line-height: 1.2;
+    }
+
+    .article-body h3 {
+      font-family: var(--font-head);
+      font-size: clamp(16px, 1.6vw, 20px);
+      font-weight: 600;
+      color: var(--light);
+      margin: 36px 0 12px;
+    }
+
+    /* Body text */
+    .article-body p {
+      color: rgba(232,237,242,0.78);
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* Lead paragraph — first p after h1 area */
+    .article-body p.lead {
+      font-size: 18px;
+      color: rgba(232,237,242,0.88);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    /* Pull quote */
+    .article-body blockquote {
+      border-left: 3px solid var(--signal);
+      margin: 36px 0;
+      padding: 4px 0 4px 28px;
+    }
+
+    .article-body blockquote p {
+      font-family: var(--font-head);
+      font-size: clamp(17px, 1.8vw, 22px);
+      font-weight: 400;
+      color: var(--light);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .article-body blockquote cite {
+      display: block;
+      margin-top: 10px;
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* Callout box */
+    .callout {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--amber);
+      border-radius: 3px;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+
+    .callout-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 8px;
+    }
+
+    .callout p {
+      font-size: 14.5px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Inline code */
+    .article-body code {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      background: var(--deep);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1px 6px;
+      color: var(--signal);
+    }
+
+    /* Code block */
+    .article-body pre {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 20px 24px;
+      margin: 28px 0;
+      overflow-x: auto;
+    }
+
+    .article-body pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 13px;
+      color: rgba(232,237,242,0.8);
+      line-height: 1.7;
+    }
+
+    /* Lists */
+    .article-body ul, .article-body ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+      color: rgba(232,237,242,0.78);
+    }
+
+    .article-body li {
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+
+    .article-body li::marker { color: var(--signal); }
+
+    /* Figure + caption */
+    figure {
+      margin: 40px 0;
+    }
+
+    figure img {
+      width: 100%;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    figcaption {
+      font-family: var(--font-head);
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    /* Horizontal rule */
+    .article-body hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* Tag pills */
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 48px 0 0;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── AUTHOR FOOTER ────────────────────────────────── */
+    .article-author {
+      max-width: var(--prose-width);
+      margin: 0 auto;
+      padding: 0 10vw 80px;
+    }
+
+    .author-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--deep);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px 28px;
+    }
+
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--mid);
+      border: 2px solid var(--signal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--signal);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--light);
+      margin-bottom: 2px;
+    }
+
+    .author-role {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .author-home {
+      margin-left: auto;
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--signal);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .author-home:hover { color: var(--light); }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      padding: 28px 10vw;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: rgba(138,155,187,0.35);
+    }
+
+    .footer-signal {
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: rgba(74,127,165,0.4);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .article-hero { padding: 100px 20px 48px; }
+      .article-body { padding: 40px 20px 80px; }
+      .article-author { padding: 0 20px 60px; }
+      footer { padding: 24px 20px; }
+      .meta-divider { display: none; }
+      .author-home { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-brand">A<span>.</span>SUCEVIC</a>
+    <a href="index.html#articles" class="nav-back">← Articles</a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════
+       ARTICLE HEADER
+       Fill in: category tag, title, subtitle, date, read time
+  ════════════════════════════════════════════════════ -->
+  <header class="article-hero">
+
+    <div class="article-tag">CATEGORY TAG</div>
+    <!-- Examples: Operations · Flight Dynamics · Ground Segment · Systems Engineering · Mission Design -->
+
+    <h1>Your Article Title Goes Here</h1>
+
+    <p class="article-subtitle">
+      A one or two sentence subtitle that expands on the title and sets up what the reader is about to learn.
+    </p>
+
+    <div class="article-meta-bar">
+      <div class="meta-item">
+        <span class="meta-label">Author</span>
+        <span class="meta-value">Andrija Sučević</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-label">Published</span>
+        <span class="meta-value">DD Mon YYYY</span>
+        <!-- Example: 28 Jun 2026 -->
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-label">Read time</span>
+        <span class="meta-value">X min read</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-label">Mission context</span>
+        <span class="meta-value">EPS-SG / CO2M / etc.</span>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════
+       ARTICLE BODY
+       Write your article here using the elements below.
+       Delete any elements you don't need.
+  ════════════════════════════════════════════════════ -->
+  <article class="article-body">
+
+    <!-- Lead paragraph — slightly larger, sets the scene -->
+    <p class="lead">
+      This is the opening paragraph. Make it count — it's what persuades someone to keep reading. Summarise the problem, the context, or the central question in two or three sentences.
+    </p>
+
+    <!-- ── SECTION 1 ────────────────────────────────── -->
+    <h2>First Section Heading</h2>
+
+    <p>
+      Regular body text goes here. You can write as many paragraphs as you need under each heading. Keep sentences clear and direct — this is technical writing, not prose for its own sake.
+    </p>
+
+    <p>
+      Second paragraph of the section. Continue the argument or introduce supporting detail.
+    </p>
+
+    <!-- Pull quote — use for a key insight worth highlighting -->
+    <blockquote>
+      <p>The single most important sentence or insight from this section, phrased to stand on its own.</p>
+      <cite>— Source or context, if applicable</cite>
+    </blockquote>
+
+    <!-- ── SECTION 2 ────────────────────────────────── -->
+    <h2>Second Section Heading</h2>
+
+    <p>
+      Continue the article. Each h2 is a major section; use h3 for sub-points within a section.
+    </p>
+
+    <h3>A Sub-point or Detail</h3>
+
+    <p>
+      Body text for the sub-section.
+    </p>
+
+    <!-- Callout box — use for notes, warnings, definitions, or key takeaways -->
+    <div class="callout">
+      <div class="callout-label">Note / Key takeaway / Definition</div>
+      <p>Use this box to highlight something that deserves special attention — a caveat, a definition, a practical rule of thumb, or a lesson learned.</p>
+    </div>
+
+    <!-- Unordered list -->
+    <ul>
+      <li>First item — keep list items parallel in structure</li>
+      <li>Second item — start each with an action word or noun phrase</li>
+      <li>Third item — don't mix full sentences and fragments in the same list</li>
+    </ul>
+
+    <!-- Ordered list (steps, procedures) -->
+    <ol>
+      <li>First step in a sequence</li>
+      <li>Second step — ordered lists imply that order matters</li>
+      <li>Third step</li>
+    </ol>
+
+    <!-- ── SECTION 3 ────────────────────────────────── -->
+    <h2>Third Section Heading</h2>
+
+    <p>
+      More body text.
+    </p>
+
+    <!-- Figure — replace src with your image path -->
+    <figure>
+      <img src="YOUR-IMAGE.png" alt="Describe what the image shows" />
+      <figcaption>Figure 1 — Caption describing the image, its source, and what the reader should take from it.</figcaption>
+    </figure>
+
+    <!-- Inline code example -->
+    <p>
+      You can reference tool names or short values inline, like <code>SCOS-2000</code> or <code>APEX</code>, using the inline code style.
+    </p>
+
+    <!-- Code block — for scripts, commands, or structured data -->
+    <pre><code># Example: Python snippet or command
+import something
+result = something.do(this)
+print(result)</code></pre>
+
+    <hr />
+
+    <!-- ── CONCLUSION ──────────────────────────────── -->
+    <h2>Conclusion</h2>
+
+    <p>
+      Wrap up the article. Restate what was covered without just repeating it. Point to what this means in practice, what open questions remain, or what the reader should do next.
+    </p>
+
+    <!-- Article tags — replace with relevant keywords -->
+    <div class="article-tags">
+      <span class="tag">Tag One</span>
+      <span class="tag">Tag Two</span>
+      <span class="tag">Tag Three</span>
+      <span class="tag">Tag Four</span>
+    </div>
+
+  </article>
+
+  <!-- AUTHOR CARD -->
+  <div class="article-author">
+    <div class="author-card">
+      <div class="author-avatar">AS</div>
+      <div>
+        <div class="author-name">Andrija Sučević</div>
+        <div class="author-role">Senior Spacecraft Operations Engineer · ESA, Darmstadt</div>
+      </div>
+      <a href="index.html" class="author-home">Back to site →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2026 Andrija Sučević — All rights reserved</div>
+    <div class="footer-signal">SIGNAL NOMINAL</div>
+  </footer>
+
+</body>
+</html>
